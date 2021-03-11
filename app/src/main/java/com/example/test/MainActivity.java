@@ -67,21 +67,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                new IOAsyncTask().execute();
-//                if(editText.getText().length() > 0) {
-//                    arrayList.add(String.valueOf(editText.getText()));
-//
-//                    if (arrayList.get(arrayList.size()-1).equals("next")){
-//                        Intent intent = new Intent(MainActivity.this, SwitchClass.class);
-//                        startActivity(intent);
-//                    }
-//
-//                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
-//                            android.R.layout.simple_list_item_1, arrayList);
-//
-//                    listView.setAdapter(adapter);
-//                }
-//                editText.setText("");
+                if(editText.getText().length() > 0) {
+                    arrayList.add(String.valueOf(editText.getText()));
+
+                    if (arrayList.get(arrayList.size()-1).equals("next")){
+                        Intent intent = new Intent(MainActivity.this, SwitchClass.class);
+                        startActivity(intent);
+                    }
+
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
+                            android.R.layout.simple_list_item_1, arrayList);
+
+                    listView.setAdapter(adapter);
+                }
+                else{
+                    new IOAsyncTask().execute();
+                }
+                editText.setText("");
             }
         });
 
